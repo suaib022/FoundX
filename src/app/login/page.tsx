@@ -4,12 +4,13 @@ import { Button } from "@nextui-org/button";
 import Link from "next/link";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { FieldValues, SubmitHandler } from "react-hook-form";
+import { useRouter, useSearchParams } from "next/navigation";
+import { useEffect } from "react";
+
 import FXForm from "@/src/components/form/FXForm";
 import loginValidationSchema from "@/src/schemas/login.schema";
 import FXInput from "@/src/components/form/FXInput";
-import { useRouter, useSearchParams } from "next/navigation";
 import { useUserLogin } from "@/src/hooks/auth.hook";
-import { useEffect } from "react";
 import Loading from "@/src/components/Loading";
 import { useUser } from "@/src/context/user.provider";
 
@@ -45,14 +46,14 @@ const LoginPage = () => {
         <p className="mb-4">Welcome Back! Let&lsquo;s Get Started</p>
         <div className="w-[35%]">
           <FXForm
-            onSubmit={onSubmit}
             resolver={zodResolver(loginValidationSchema)}
+            onSubmit={onSubmit}
           >
             <div className="py-3">
-              <FXInput name="email" label="Email" type="email" />
+              <FXInput label="Email" name="email" type="email" />
             </div>
             <div className="py-3">
-              <FXInput name="password" label="Password" type="password" />
+              <FXInput label="Password" name="password" type="password" />
             </div>
 
             <Button

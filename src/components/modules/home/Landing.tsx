@@ -1,6 +1,6 @@
 /* eslint-disable import/order */
+import { SearchIcon } from "@/src/assets/icons";
 import { Input } from "@nextui-org/input";
-import { SearchIcon } from "../../icons";
 
 export default function Landing() {
   return (

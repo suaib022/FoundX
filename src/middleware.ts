@@ -13,11 +13,6 @@ const roleBasedRoutes = {
 
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
-  //   const user = {
-  //     name: "Mir",
-  //     token: "adsf asda",
-  //     role: "ADMIN",
-  //   };
 
   const user = await getCurrentUser();
 
@@ -26,7 +21,7 @@ export async function middleware(request: NextRequest) {
       return NextResponse.next();
     } else {
       return NextResponse.redirect(
-        new URL(`/login?redirect=${pathname}`, request.url)
+        new URL(`/login?redirect=${pathname}`, request.url),
       );
     }
   }
