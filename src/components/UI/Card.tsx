@@ -1,12 +1,18 @@
+"use client";
+
 import { Card as NextUiCard, CardHeader, CardFooter } from "@nextui-org/card";
 import { Button } from "@nextui-org/button";
 import { Image } from "@nextui-org/image";
 import { format } from "date-fns";
 
 import { IPost } from "@/src/types";
+import { Link } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 const Card = ({ post }: { post: IPost }) => {
   const { title, category, images, city, dateFound, _id } = post || {};
+
+  const router = useRouter();
 
   return (
     <NextUiCard isFooterBlurred className="h-[300px] w-full">
@@ -34,6 +40,7 @@ const Card = ({ post }: { post: IPost }) => {
         </div>
 
         <Button
+          onClick={() => router.push(`/found-items/${_id}`)}
           className="bg-black text-tiny text-white"
           radius="full"
           size="sm"
